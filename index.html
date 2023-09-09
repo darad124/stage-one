@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Task</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to My Frontend Page</h1>
+    
+    <!-- Slack Name -->
+    <p data-testid="slackUserName">Gbolagade Oluwadara</p>
+    
+    <!-- Slack Display Picture -->
+    <img src="slack-profile-image.jpg" alt="    Gbolagade Oluwadara" data-testid="slackDisplayImage">
+    
+    <!-- Current Day of the Week -->
+    <p data-testid="currentDayOfTheWeek">Loading...</p>
+    
+    <!-- Current UTC Time -->
+    <p data-testid="currentUTCTime">Loading...</p>
+    
+    <!-- Track -->
+    <p data-testid="myTrack">Frontend</p>
+    
+    <!-- GitHub URL -->
+    <a href="" data-testid="githubURL">My GitHub Repository</a>
+
+    <script>
+        // Function to update the current day of the week
+        function updateDayOfWeek() {
+            const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const today = new Date();
+            const dayOfWeek = daysOfWeek[today.getUTCDay()];
+            document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = dayOfWeek;
+        }
+
+       // Function to update the current UTC time
+       function updateUTCTime() {
+    const utcOffsetInHours = 1;
+    const now = new Date();
+    const utcTimeInMilliseconds = now.getTime() + utcOffsetInHours * 60 * 60 * 1000;
+    document.querySelector('[data-testid="currentUTCTime"]').textContent = new Date(utcTimeInMilliseconds).toUTCString();
+}
+
+// Call the function to update the UTC time
+updateUTCTime();
+
+
+
+
+        // Update day of the week and UTC time every second
+        setInterval(updateDayOfWeek, 1000);
+        setInterval(updateUTCTime, 1000);
+
+        // Call the functions initially
+        updateDayOfWeek();
+        updateUTCTime();
+    </script>
+</body>
+</html>
